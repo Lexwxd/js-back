@@ -2,15 +2,15 @@ const express = require('express');
 const http = require('http');
 const cors = require('cors');
 const apiRouter = require('./controllers/api.controller');
-const testRouter = require('./controllers/test.controller');
-const { notFound, errorHandler, asyncHandler } = require('./middlewares/middlewares');
+//const testRouter = require('./controllers/test.controller');
+const { notFound, errorHandler, asyncHandler } = require('./middlewares/meddlewares');
 const { initDB } = require('./dataBase');
 
 //Init zone
 const app = express();
 
 //InitDB
-// initDB();
+ initDB();
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -24,12 +24,11 @@ app.use((req, res, next) => {
   console.log('IsSecure = ', req.secure);
   console.log('BODY', req.body);
   console.log('QUERY', req.query);
-
   next();
 });
 
 app.use('/api/todos', apiRouter);
-app.use('/test', testRouter);
+//app.use('/test', testRouter);
 
 app.use(notFound);
 app.use(errorHandler);
