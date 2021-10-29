@@ -1,8 +1,11 @@
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
-const apiRouter = require('./controllers/api.controller');
+const apiAuthRouter = require('./controllers/api-auth.controller');
+const apiTodoRouter = require('./controllers/api-todos.controller');
+const apiUserRouter = require('./controllers/api-user.controller');
 //const testRouter = require('./controllers/test.controller');
+// const apiRouter = require('./controllers/api-todos.controller');
 const { notFound, errorHandler, asyncHandler } = require('./middlewares/meddlewares');
 const { initDB } = require('./dataBase');
 
@@ -10,11 +13,13 @@ const { initDB } = require('./dataBase');
 const app = express();
 
 //InitDB
- initDB();
+
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+initDB();
+
 
 app.use((req, res, next) => {
   console.log('URL = ', req.url);

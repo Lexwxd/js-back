@@ -4,14 +4,18 @@ const { sequelize } = require('..');
 class ToDo extends Sequelize.Model { }
 
 ToDo.init({
-  userid: {
-    type: Sequelize.STRING,
+  id: {
+    type: Sequelize.DataTypes.UUID,
+    primaryKey: true,
+    defaultValue: Sequelize.DataTypes.UUIDV4
   },
   title: {
     type: Sequelize.STRING,
+    default: "Titlo",
   },
   description: {
     type: Sequelize.STRING,
+    default: "",
   },
   isDone: {
     type: Sequelize.BOOLEAN,
@@ -31,5 +35,5 @@ ToDo.init({
   modelName: 'ToDo' // We need to choose the model name
 });
 
-module.exports = ToDo
+module.exports = ToDo;
 
