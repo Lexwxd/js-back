@@ -4,6 +4,7 @@ const cors = require('cors');
 const apiAuthRouter = require('./controllers/api-auth.controller');
 const apiTodoRouter = require('./controllers/api-todos.controller');
 const apiUserRouter = require('./controllers/api-user.controller');
+const apiCommentRouter = require('./controllers/api-comment.controller');
 //const testRouter = require('./controllers/test.controller');
 // const apiRouter = require('./controllers/api-todos.controller');
 const { notFound, errorHandler, asyncHandler } = require('./middlewares/meddlewares');
@@ -32,7 +33,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/todos', apiRouter);
+app.use('/api/todos', apiTodoRouter);
+app.use('/api/user', apiUserRouter);
+app.use('/api/auth', apiAuthRouter);
+app.use('/api/comment', apiCommentRouter);
 //app.use('/test', testRouter);
 
 app.use(notFound);

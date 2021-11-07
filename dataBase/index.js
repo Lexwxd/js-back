@@ -9,8 +9,8 @@ const sequelize = new Sequelize('js-Todo', 'postgres', '1235', {
 const initDB = async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.dropSchema('public', {});
-    await sequelize.createSchema('public', {});
+    // await sequelize.dropSchema('public', {});
+    // await sequelize.createSchema('public', {});
     await sequelize.sync();
     console.log('Sequelize was initialized');
   }

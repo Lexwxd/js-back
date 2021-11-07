@@ -29,11 +29,22 @@ ToDo.init({
     type: Sequelize.SMALLINT,
     defaultValue: 1
   },
+  commentId: {
+    type: Sequelize.DataTypes.UUID,
+    defaultValue: Sequelize.DataTypes.UUIDV4
+  },
+
 }, {
   // Other model options go here
   sequelize: sequelize, // We need to pass the connection instance
   modelName: 'ToDo' // We need to choose the model name
 });
 
+
+
+
+
 module.exports = ToDo;
+
+
 
